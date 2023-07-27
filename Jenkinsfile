@@ -16,6 +16,9 @@ pipeline {
          sh "aws s3 ls"
         }
 	  }
+	  catch(err){
+	  	sh "echo error in sending file to s3"
+	  }
 	 }
 	}
 }
