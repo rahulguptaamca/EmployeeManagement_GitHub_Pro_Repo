@@ -13,7 +13,7 @@ pipeline {
 	 stage('deploy'){
 	  steps{
          withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'deploytos3', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-           sh "/usr/local/bin/aws s3 cp demo.html s3://myfirststhree"
+           sh "/usr/local/bin/aws s3 cp src s3://myfirststhree"
         }
 	  }
 	 }
