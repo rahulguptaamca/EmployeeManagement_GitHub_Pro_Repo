@@ -11,13 +11,15 @@ pipeline {
 	 }
 
 	 stage('deploy'){
-	  try{
+	  steps{
+	   try{
 	  	withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'deploytos3', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
          sh "aws s3 ls"
         }
 	  }
 	  catch(err){
 	  	sh "echo error in sending file to s3"
+	  }
 	  }
 	 }
 	}
