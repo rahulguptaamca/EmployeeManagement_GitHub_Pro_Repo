@@ -11,8 +11,10 @@ pipeline {
 	 }
 
 	 stage('deploy'){
-	  steps{
-	   sh "aws s3 cp demo.html s3://myfirststhree"
+	  try{
+	  	withCredentials([<object of type com.cloudbees.jenkins.plugins.awscredentials.AmazonWebServicesCredentialsBinding>]) {
+         sh "aws s3 ls"
+       }
 	  }
 	 }
 	}
